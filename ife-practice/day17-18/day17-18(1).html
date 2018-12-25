@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <script>
+			var a = document.getElementById("first-number");
+			var b = document.getElementById("second-number");
+			if(a.type !== "number" || b.type !== "number") {
+				console.log("请输入数字");
+			} else {
+				document.getElementById("add-btn").onclick = function() {
+					var add = parseInt(a.value) + parseInt(b.value);
+					document.getElementById("result").innerHTML = '运算结果为：' + add;
+				}
+				document.getElementById("minus-btn").onclick = function() {
+					var minus = parseInt(a.value) - parseInt(b.value);
+					document.getElementById("result").innerHTML = '运算结果为：' + minus;
+				}
+				document.getElementById("times-btn").onclick = function() {
+					var times = parseInt(a.value) * parseInt(b.value);
+					document.getElementById("result").innerHTML = '运算结果为：' + times;
+				}
+				document.getElementById("divide-btn").onclick = function() {
+					if(b.value == "0") {
+						console.log("被除数不能为0");
+					} else {
+						var divide = parseInt(a.value) / parseInt(b.value);
+						document.getElementById("result").innerHTML = '运算结果为：' + divide;
+					}
+				}
+			}
+    </script>
+</body>
+</html>

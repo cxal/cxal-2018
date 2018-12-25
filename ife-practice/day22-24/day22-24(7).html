@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">    
+  <title>IFE ECMAScript</title>
+</head>
+<body>
+	<input id="stack-input" type="text">
+	<p id="stack-cont">栈内容：apple-&gt;pear</p>    
+	<button id="push-btn">进栈</button>
+	<button id="pop-btn">退栈</button>
+	<button id="font-btn">打印栈顶元素内容</button>
+	<button id="empty-btn">判断栈是否为空</button>
+
+	<script>
+		var stack = ["apple", "pear"];
+		var pushbtn = document.getElementById('push-btn');
+		var popbtn = document.getElementById('pop-btn');
+		var fontbtn = document.getElementById('font-btn');
+		var emptybtn = document.getElementById('empty-btn');
+		var inputText = document.getElementById('stack-input');
+		var pText = document.getElementById('stack-cont');
+		//进栈
+		function textIn() {
+			if(inputText.value != "")
+				{stack.push(inputText.value);
+				pText.innerHTML = '栈内容：' + stack.join('-&gt');
+				inputText.value = '';
+				inputText.focus();
+			}
+		}
+		//退栈
+		function textOut() {
+			stack.pop();
+			pText.innerHTML = '栈内容：' + stack.join('-&gt');
+		}
+		//打印栈顶元素
+		function  printing() {
+			var fir = stack.pop();
+			stack.push(fir);
+			console.log(fir);
+		}
+		//判断 空
+		function  judge() {
+			if(stack.length > 0) {
+				alert('队列不为空');
+			}
+			else {
+				alert('队列为空');
+			}
+		}
+
+		pushbtn.onclick = textIn;
+		popbtn.onclick = textOut;
+		fontbtn.onclick = printing;
+		emptybtn.onclick = judge;
+	</script>
+</body>
+</html>

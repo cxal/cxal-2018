@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>15201102 陳興</title>
+	<style>
+		body{
+			background-color: yellow;
+			color:blue;
+			font-size:20px;
+			line-height:40px;
+			}
+		button{font-size:15px;}
+	</style>
+	<script>
+		window.onload = init;
+		
+		var atari = Math.floor(Math.random() * 3 + 1);
+		
+		function init() {
+			var e = document.getElementById("block");
+			e.innerHTML = "<h2>どれにしますか？</h2>" + "<div>" +
+			"<img src='14_images/box-close.gif' onclick='openBox(1)'>" +
+			"<img src='14_images/box-close.gif' onclick='openBox(2)'>" +
+			"<img src='14_images/box-close.gif' onclick='openBox(3)'>" + "</div>"
+		}
+		function openBox(num) {
+			var e = document.getElementById("block");
+			if(num == atari) {
+				e.innerHTML = "<h2>当たり！</h2>" +
+				"<img src='14_images/box-open-zaihou.gif'>" +
+				"<br>良かったですね！<br>" +
+				"<button type='button' onclick='refresh()'>もう一度！</button>"
+			} else {
+				e.innerHTML = "<h2>はずれ</h2>" +
+				"<img src='14_images/box-open.gif'>" +
+				"<br>中にはなにもありません。<br>" +
+				"<button type='button' onclick='refresh()'>もう一度！</button>"
+			}
+		}
+		function refresh() {
+			window.location.reload();
+		}
+	</script>
+</head>
+<body>
+	<div id="block" style="text-align:center;"></div>
+</body>
+</html>

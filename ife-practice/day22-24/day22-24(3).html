@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">    
+  <title>IFE ECMAScript</title>
+</head>
+<body>            
+  <script>
+    /*
+    实现一个字符串头尾去除空格的函数
+    注意需要去除的空格，包括全角、半角空格
+    暂时不需要学习和使用正则表达式的方式
+    */
+    function diyTrim(str) {
+      var result = "";
+      var m = 0;
+      var n = str.length - 1;
+      for (var i = 0; i < str.length; i++) {
+        if(m <= n && (str.charAt(m) == " " || str.charAt(m) == "　")) {
+          m ++;
+        }
+        if(m <= n && (str.charAt(n) == " " || str.charAt(n) == "　")) {
+          n --;
+        }
+      };
+      result = str.substring(m,n + 1);
+      return result
+    }
+
+    // 测试用例
+    console.log(diyTrim(' a f b    ')); // ->a f b
+    console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+    console.log(diyTrim('1    ')); // ->1
+    console.log(diyTrim('　　f')); // ->f
+    console.log(diyTrim('  　  a f b 　　 ')); // ->a f b
+    console.log(diyTrim(' ')); // ->
+    console.log(diyTrim('　')); // ->
+    console.log(diyTrim('')); // ->
+
+    
+    //去掉字符串str中，连续重复的地方
+    
+    /*function removeRepetition(str) {
+      var result = "";
+      result = str;
+      var str1;
+      var str2 = str.match(/(.)\1+/g);    //11,22,333,55 当然这里用()\1*也会可以(因为下面是替换):11,22,333,4,55
+      if(result !== "" && str2 !== null) {
+        for(var i = 0;i<str2.length;i++){
+          str1 = str2[i].substring(0,1);
+          result = result.replace(str2[i],str1);
+        }
+      }
+      return result;
+    }
+
+    // 测试用例
+    console.log(removeRepetition("aaa")); // ->a
+    console.log(removeRepetition("abbba")); // ->aba
+    console.log(removeRepetition("aabbaabb")); // ->abab
+    console.log(removeRepetition("")); // ->
+    console.log(removeRepetition("abc")); // ->abc*/
+  </script>
+</body>
+</html>

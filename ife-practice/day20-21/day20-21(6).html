@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">    
+  <title>IFE ECMAScript</title>
+  <style>
+    .DIV{
+      background-image: url("erik_ce204002.jpg");
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      width: 480px;
+      height: 480px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>            
+  <div class="DIV"></div>
+  <script>
+    var pos = document.querySelector('.DIV');
+    var h = 0;
+    function smile() {
+      h -= 480;
+      pos.style.backgroundPosition = "0 " + h + "px";
+      console.log(h);
+      if(h == -7680) {
+        clearInterval(id1);
+        id2 = setInterval(nosmile,100);
+      }
+    }
+    function nosmile() {
+        h += 480;
+        pos.style.backgroundPosition = "0 " + h + "px";
+        console.log(h);
+        if(h == 0) {
+        clearInterval(id2);
+        id1 = setInterval(smile,100);
+      }
+    }
+    window.onload = function() {
+        id1 = setInterval(smile,100);
+      }
+  </script>
+</body>
+</html>
